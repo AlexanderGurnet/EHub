@@ -8,4 +8,4 @@ module.exports = {
       'process.env.name': JSON.stringify('Codevolution'),
     }),
   ],
-}
+};
