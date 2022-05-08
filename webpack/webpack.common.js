@@ -11,29 +11,27 @@ module.exports = {
       {
         test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: 'babel-loader',
-          },
-        ],
+        use: ['babel-loader'],
       },
       {
-        test: /\.(s[ac]|c)ss$/i,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        test: /\.(?:ico|gif|png|jpg|jpeg|svg)$/i,
         type: 'asset/resource',
+        generator: {
+          filename: 'static/media/images/[name].[hash][ext]',
+        },
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        test: /\.(woff(2)?|eot|ttf|otf|)$/,
         type: 'asset/resource',
+        generator: {
+          filename: 'static/media/fonts/[name].[hash][ext]',
+        },
       },
     ],
   },
   output: {
     path: path.resolve(__dirname, '..', './build'),
-    filename: 'bundle.js',
+    filename: 'static/js/bundle.js',
   },
   plugins: [
     new HtmlWebpackPlugin({
